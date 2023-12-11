@@ -10,11 +10,18 @@
 #'  of a set of points.
 #'  If `y` and `z` are missing, an attempt is made to interpret `x` in a
 #'  suitable way (see [grDevices::xyz.coords()]).
+#' @param xlab,ylab,zlab A [`character`] string specifying the names for the x,
+#'  y and z variables to be extracted.
 #' @param missing A [`logical`] scalar: should [missing values][NA] be replaced
 #'  with zeros before the computation proceeds? If `FALSE` (the default),
 #'  incomplete cases are removed.
 #' @param ... Currently not used.
-#' @return A [`list`].
+#' @return
+#'  A [`list`] with the components:
+#'  \tabular{ll}{
+#'   `x` \tab A [`numeric`] vector of x values. \cr
+#'   `y` \tab A [`numeric`] vector of y values. \cr
+#'  }
 #' @example inst/examples/ex-coordinates.R
 #' @author N. Frerebeau
 #' @docType methods
@@ -33,8 +40,16 @@ setGeneric(
 #' @param x,y A [`numeric`] vector giving the x and y ternary coordinates of a
 #'  set of points. If `y` is missing, an attempt is made to interpret `x` in a
 #'  suitable way (see [grDevices::xy.coords()]).
+#' @param xlab,ylab A [`character`] string specifying the names for the x and y
+#'  variables to be extracted.
 #' @param ... Currently not used.
-#' @return A [`list`].
+#' @return
+#'  A [`list`] with the components:
+#'  \tabular{ll}{
+#'   `x` \tab A [`numeric`] vector of x values. \cr
+#'   `y` \tab A [`numeric`] vector of y values. \cr
+#'   `z` \tab A [`numeric`] vector of z values. \cr
+#'  }
 #' @example inst/examples/ex-coordinates.R
 #' @author N. Frerebeau
 #' @docType methods
@@ -78,7 +93,7 @@ setGeneric(
 #'  arguments to this function.
 #' @return
 #'  `ternary_plot()` is called it for its side-effects: it results in a graphic
-#'  being displayed.
+#'  being displayed. Invisibly returns `x`.
 #' @example inst/examples/ex-plot.R
 #' @author N. Frerebeau
 #' @docType methods
@@ -194,10 +209,10 @@ NULL
 #'  the column to be used as the third part of the ternary plots. If `NULL`
 #'  (the default), marginal compositions will be used (i.e. the geometric mean
 #'  of the non-selected parts).
-#' @param ... Further arguments to be passed to [graphics::arrows()].
+#' @param ... Further [graphical parameters][graphics::par()].
 #' @return
-#'  `ternary_pairs()` is called it for its side-effects.
-#' @seealso [graphics::arrows()]
+#'  `ternary_pairs()` is called it for its side-effects: it results in a graphic
+#'  being displayed. Invisibly returns `x`.
 #' @example inst/examples/ex-pairs.R
 #' @author N. Frerebeau
 #' @docType methods
@@ -366,6 +381,30 @@ setGeneric(
   def = function(x, y, z, ...) standardGeneric("ternary_text")
 )
 
+#' Non-Overlapping Text Labels
+#'
+#' Optimize the location of text labels to minimize overplotting text.
+#' @param x,y,z A [`numeric`] vector giving the x, y and z ternary coordinates
+#'  of a set of points. If `y` and `z` are missing, an attempt is made to
+#'  interpret `x` in a suitable way (see [grDevices::xyz.coords()]).
+#' @param labels A [`character`] vector or [`expression`] specifying the text
+#'  to be written.
+#' @param ... Further graphical parameters (see [graphics::par()]) may also be
+#'  supplied as arguments, particularly, character expansion, `cex` and
+#'  color, `col`.
+#' @return
+#'  `ternary_labels()` is called it for its side-effects.
+#' @seealso [graphics::text()]
+#' @example inst/examples/ex-labels.R
+#' @author N. Frerebeau
+#' @docType methods
+#' @family geometries
+#' @aliases ternary_labels-method
+setGeneric(
+  name = "ternary_labels",
+  def = function(x, y, z, ...) standardGeneric("ternary_labels")
+)
+
 # Statistics ===================================================================
 ## Ellipse ---------------------------------------------------------------------
 #' Add an Ellipse to a Ternary Plot
@@ -443,10 +482,10 @@ setGeneric(
 #'  argument (the number of levels) and returns a vector of colors.
 #' @param ilr A [`logical`] scalar: should interpolation be computed in ILR
 #'  space? If `FALSE`, interpolation is computed in Cartesian space.
-#' @param linear A [`logical`] scalar: should linear interpolation be used?
-#'  If `FALSE`, spline interpolation is used (see [akima::interp()]).
+#' @param method A [`character`] string: specifying the method for interpolation
+#'  (see [interp::interp()]).
 #' @param extrapolate A [`logical`] scalar: should extrapolation be used outside
-#'  of the convex hull determined by the data points (see [akima::interp()])?
+#'  of the convex hull determined by the data points (see [interp::interp()])?
 #' @param ... Further arguments to be passed to [ternary_lines()].
 #' @details
 #'  Contour are computed from a bivariate interpolation onto a grid,
@@ -457,8 +496,8 @@ setGeneric(
 #'  Invisibly returns a [`list`] with elements `levels` (the contour levels) and
 #'  `colors` (the contour colors) that can be used for a legend.
 #' @note
-#'  The \pkg{akima} package needs to be installed on your machine.
-#' @seealso [akima::interp()], [grDevices::contourLines()]
+#'  The \pkg{interp} package needs to be installed on your machine.
+#' @seealso [interp::interp()], [grDevices::contourLines()]
 #' @example inst/examples/ex-contour.R
 #' @author N. Frerebeau
 #' @docType methods

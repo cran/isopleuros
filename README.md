@@ -9,18 +9,33 @@
 [![codecov](https://codecov.io/gh/tesselle/isopleuros/branch/main/graph/badge.svg?token=QnnAqgIIUp)](https://app.codecov.io/gh/tesselle/isopleuros)
 [![CodeFactor](https://www.codefactor.io/repository/github/tesselle/isopleuros/badge/main)](https://www.codefactor.io/repository/github/tesselle/isopleuros/overview/main)
 
-<a href="https://tesselle.r-universe.dev" class="pkgdown-devel"><img
+<a href="https://tesselle.r-universe.dev/isopleuros"
+class="pkgdown-devel"><img
 src="https://tesselle.r-universe.dev/badges/isopleuros"
 alt="r-universe" /></a>
+<a href="https://cran.r-project.org/package=isopleuros"
+class="pkgdown-release"><img
+src="http://www.r-pkg.org/badges/version/isopleuros"
+alt="CRAN Version" /></a> <a
+href="https://cran.r-project.org/web/checks/check_results_isopleuros.html"
+class="pkgdown-release"><img
+src="https://badges.cranchecks.info/worst/isopleuros.svg"
+alt="CRAN checks" /></a>
+<a href="https://cran.r-project.org/package=isopleuros"
+class="pkgdown-release"><img
+src="http://cranlogs.r-pkg.org/badges/isopleuros"
+alt="CRAN Downloads" /></a>
 
 [![Project Status: Active – The project has reached a stable, usable
 state and is being actively
 developed.](https://www.repostatus.org/badges/latest/active.svg)](https://www.repostatus.org/#active)
+
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.7940389.svg)](https://doi.org/10.5281/zenodo.7940389)
 <!-- badges: end -->
 
 ## Overview
 
-Ternary plots made simple. **isopleuros** allows to create ternary plot
+Ternary plots made simple. **isopleuros** allows to create ternary plots
 using **graphics**. It provides functions to display the data in the
 ternary space, to add or tune graphical elements and to display
 statistical summaries. It also includes common ternary diagrams useful
@@ -34,10 +49,11 @@ should consider the [**Ternary**](https://ms609.github.io/Ternary/) or
     To cite isopleuros in publications use:
 
       Frerebeau N (2023). _isopleuros: Ternary Plots_. Université Bordeaux
-      Montaigne, Pessac, France. R package version 1.0.0,
+      Montaigne, Pessac, France. doi:10.5281/zenodo.7940389
+      <https://doi.org/10.5281/zenodo.7940389>, R package version 1.1.0,
       <https://packages.tesselle.org/isopleuros/>.
 
-    Une entrée BibTeX pour les utilisateurs LaTeX est
+    A BibTeX entry for LaTeX users is
 
       @Manual{,
         author = {Nicolas Frerebeau},
@@ -45,8 +61,9 @@ should consider the [**Ternary**](https://ms609.github.io/Ternary/) or
         year = {2023},
         organization = {Université Bordeaux Montaigne},
         address = {Pessac, France},
-        note = {R package version 1.0.0},
+        note = {R package version 1.1.0},
         url = {https://packages.tesselle.org/isopleuros/},
+        doi = {10.5281/zenodo.7940389},
       }
 
     This package is a part of the tesselle project
@@ -150,4 +167,5 @@ Please note that the **isopleuros** project is released with a
 contributing to this project, you agree to abide by its terms.
 
 [^1]: The only exception is the `ternary_contour()` function for which
-    the **akima** package is required, but is not installed by default.
+    the [**interp**](https://cran.r-project.org/package=interp) package
+    is required, but is not installed by default.

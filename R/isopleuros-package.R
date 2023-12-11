@@ -2,8 +2,9 @@
 #' \tabular{ll}{
 #'  **Package:** \tab isopleuros \cr
 #'  **Type:** \tab Package \cr
-#'  **Version:** \tab 1.0.0 \cr
+#'  **Version:** \tab 1.1.0 \cr
 #'  **License:** \tab GPL-3 \cr
+#'   **Zenodo:** \tab \doi{10.5281/zenodo.7940389} \cr
 #' }
 #'
 #' @section Package options:
@@ -37,9 +38,11 @@
 "_PACKAGE"
 
 #' @importFrom graphics arrows layout lines par points polygon segments
-#' strheight strwidth text plot plot.default plot.new plot.window rasterImage
+#' strheight strwidth text par plot plot.default plot.new plot.window
+#' rasterImage
 #' @importFrom grDevices as.graphicsAnnot as.raster chull colorRampPalette
 #' contourLines dev.flush dev.hold hcl.colors xyz.coords
 #' @importFrom methods setGeneric setMethod .valueClassTest
 #' @importFrom utils combn
+#' @importFrom stats as.dist optim
 NULL
