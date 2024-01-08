@@ -1,6 +1,6 @@
 Package: isopleuros
 Title: Ternary Plots
-Version: 1.1.0
+Version: 1.2.0
 Authors@R: c(
     person("Nicolas", "Frerebeau", , "nicolas.frerebeau@u-bordeaux-montaigne.fr", role = c("aut", "cre"),
            comment = c(ORCID = "0000-0001-5759-4944", affiliation = "Université Bordeaux Montaigne")),
@@ -37,7 +37,7 @@ Collate: 'AllGenerics.R' 'coordinates.R' 'data.R'
         'ternary_text.R' 'ternary_title.R' 'triangle_phase.R'
         'triangle_soil.R' 'zzz.R'
 NeedsCompilation: no
-Packaged: 2023-12-11 15:37:00 UTC; nicolas
+Packaged: 2024-01-08 09:30:33 UTC; nicolas
 Author: Nicolas Frerebeau [aut, cre] (<https://orcid.org/0000-0001-5759-4944>,
     Université Bordeaux Montaigne),
   Brice Lebrun [ctb] (<https://orcid.org/0000-0001-7503-8685>, Université
@@ -45,4 +45,4 @@ Author: Nicolas Frerebeau [aut, cre] (<https://orcid.org/0000-0001-5759-4944>,
   Université Bordeaux Montaigne [fnd],
   CNRS [fnd]
 Repository: CRAN
-Date/Publication: 2023-12-11 16:00:06 UTC
+Date/Publication: 2024-01-08 12:20:12 UTC

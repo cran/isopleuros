@@ -1,3 +1,7 @@
+# isopleuros 1.2.0
+## Enhancements
+* Allow to center and scale data before plotting.
+
 # isopleuros 1.1.0
 ## New classes and methods
 * Add `ternary_labels()` to draw non-overlapping text labels.
