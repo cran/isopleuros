@@ -8,10 +8,12 @@ NULL
 setMethod(
   f = "ternary_text",
   signature = c(x = "numeric", y = "numeric", z = "numeric"),
-  definition = function(x, y, z, labels = seq_along(x), ...) {
-    coords <- coordinates_ternary(x, y, z)
+  definition = function(x, y, z, center = FALSE, scale = FALSE,
+                        labels = seq_along(x), ...) {
+    coords <- coordinates_ternary(x, y, z, center = center, scale = scale)
     graphics::text(x = coords, labels = labels, ...)
-    invisible(data.frame(x = x, y = y, z = z))
+
+    invisible(list(x = x, y = y, z = z))
   }
 )
 
@@ -21,8 +23,12 @@ setMethod(
 setMethod(
   f = "ternary_text",
   signature = c(x = "ANY", y = "missing", z = "missing"),
-  definition = function(x, labels = seq_along(x$x), ...) {
+  definition = function(x, center = FALSE, scale = FALSE, labels = seq_along(x$x), ...) {
     x <- grDevices::xyz.coords(x)
-    methods::callGeneric(x = x$x, y = x$y, z = x$z, labels = labels, ...)
+    force(labels)
+    coords <- methods::callGeneric(x = x$x, y = x$y, z = x$z,
+                                   center = center, scale = scale,
+                                   labels = labels, ...)
+    invisible(coords)
   }
 )

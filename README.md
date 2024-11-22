@@ -8,6 +8,7 @@
 [![R-CMD-check](https://github.com/tesselle/isopleuros/workflows/R-CMD-check/badge.svg)](https://github.com/tesselle/isopleuros/actions)
 [![codecov](https://codecov.io/gh/tesselle/isopleuros/branch/main/graph/badge.svg?token=QnnAqgIIUp)](https://app.codecov.io/gh/tesselle/isopleuros)
 [![CodeFactor](https://www.codefactor.io/repository/github/tesselle/isopleuros/badge/main)](https://www.codefactor.io/repository/github/tesselle/isopleuros/overview/main)
+[![Dependencies](https://tinyverse.netlify.app/badge/isopleuros)](https://cran.r-project.org/package=isopleuros)
 
 <a href="https://tesselle.r-universe.dev/isopleuros"
 class="pkgdown-devel"><img
@@ -15,7 +16,7 @@ src="https://tesselle.r-universe.dev/badges/isopleuros"
 alt="r-universe" /></a>
 <a href="https://cran.r-project.org/package=isopleuros"
 class="pkgdown-release"><img
-src="http://www.r-pkg.org/badges/version/isopleuros"
+src="https://www.r-pkg.org/badges/version/isopleuros"
 alt="CRAN Version" /></a> <a
 href="https://cran.r-project.org/web/checks/check_results_isopleuros.html"
 class="pkgdown-release"><img
@@ -23,7 +24,7 @@ src="https://badges.cranchecks.info/worst/isopleuros.svg"
 alt="CRAN checks" /></a>
 <a href="https://cran.r-project.org/package=isopleuros"
 class="pkgdown-release"><img
-src="http://cranlogs.r-pkg.org/badges/isopleuros"
+src="https://cranlogs.r-pkg.org/badges/isopleuros"
 alt="CRAN Downloads" /></a>
 
 [![Project Status: Active – The project has reached a stable, usable
@@ -36,8 +37,8 @@ developed.](https://www.repostatus.org/badges/latest/active.svg)](https://www.re
 ## Overview
 
 Ternary plots made simple. **isopleuros** allows to create ternary plots
-using **graphics**. It provides functions to display the data in the
-ternary space, to add or tune graphical elements and to display
+using base **graphics**. It provides functions to display the data in
+the ternary space, to add or tune graphical elements and to display
 statistical summaries. It also includes common ternary diagrams useful
 for the archaeologist (e.g. soil texture charts, ceramic phase diagram).
 
@@ -46,28 +47,17 @@ as possible. If you need finer tuning or more advanced features, you
 should consider the [**Ternary**](https://ms609.github.io/Ternary/) or
 [**ggtern**](http://www.ggtern.com/) package.
 
-    To cite isopleuros in publications use:
+------------------------------------------------------------------------
 
-      Frerebeau N (2024). _isopleuros: Ternary Plots_. Université Bordeaux
-      Montaigne, Pessac, France. doi:10.5281/zenodo.7940389
-      <https://doi.org/10.5281/zenodo.7940389>, R package version 1.2.0,
-      <https://packages.tesselle.org/isopleuros/>.
+To cite isopleuros in publications use:
 
-    A BibTeX entry for LaTeX users is
+Frerebeau N (2024). *isopleuros: Ternary Plots*. Université Bordeaux
+Montaigne, Pessac, France. <doi:10.5281/zenodo.7940389>
+<https://doi.org/10.5281/zenodo.7940389>, R package version 1.3.0,
+<https://packages.tesselle.org/isopleuros/>.
 
-      @Manual{,
-        author = {Nicolas Frerebeau},
-        title = {{isopleuros: Ternary Plots}},
-        year = {2024},
-        organization = {Université Bordeaux Montaigne},
-        address = {Pessac, France},
-        note = {R package version 1.2.0},
-        url = {https://packages.tesselle.org/isopleuros/},
-        doi = {10.5281/zenodo.7940389},
-      }
-
-    This package is a part of the tesselle project
-    <https://www.tesselle.org>.
+This package is a part of the tesselle project
+<https://www.tesselle.org>.
 
 ## Installation
 

@@ -50,10 +50,11 @@ setMethod(
   definition = function(x, h = NULL, n = 25, nlevels = 10, levels = NULL,
                         palette = function(i) grDevices::hcl.colors(i, "YlOrRd", rev = TRUE),
                         ...) {
-    x <- grDevices::xyz.coords(x)
-    methods::callGeneric(x = x$x, y = x$y, z = x$z,
-                         h = h, n = n, nlevels = nlevels, levels = levels,
-                         palette = palette, ...)
+    xyz <- grDevices::xyz.coords(x)
+    pt <- methods::callGeneric(x = xyz$x, y = xyz$y, z = xyz$z,
+                               h = h, n = n, nlevels = nlevels, levels = levels,
+                               palette = palette, ...)
+    invisible(pt)
   }
 )
 
@@ -91,7 +92,8 @@ coordinates_kde <- function(x, y, z, h = NULL, n = 25,
     y = ratio[, 2],
     h = h,
     n = n,
-    lims = c(lims, lims) # x and y range should be same
+    xlim = lims, # x and y range should be same
+    ylim = lims
   )
 
   ## Compute contours
@@ -105,10 +107,11 @@ coordinates_kde <- function(x, y, z, h = NULL, n = 25,
 }
 
 ## Adapted from MASS::kde2d
-kde <- function(x, y, h = NULL, n = 25, lims = c(range(x), range(y))) {
+kde <- function(x, y, h = NULL, n = 25, gx = NULL, gy = NULL,
+                xlim = range(x), ylim = range(y)) {
   n <- rep(n, length.out = 2L)
-  gx <- seq(lims[1L], lims[2L], length.out = n[1L])
-  gy <- seq(lims[3L], lims[4L], length.out = n[2L])
+  if (is.null(gx)) gx <- seq(xlim[1L], xlim[2L], length.out = n[1L])
+  if (is.null(gy)) gy <- seq(ylim[1L], ylim[2L], length.out = n[2L])
 
   if (is.null(h)) {
     h <- c(bandwidth(x), bandwidth(y))

@@ -1,3 +1,11 @@
+# isopleuros 1.3.0
+## New classes and methods
+* Add `ternary_image()` to color a ternary plot according to the output of a function.
+
+## Enhancements
+* Allow to center and scale label coordinates.
+* Generate diagnostic messages if coordinates are not centered/scaled when they should be.
+
 # isopleuros 1.2.0
 ## Enhancements
 * Allow to center and scale data before plotting.

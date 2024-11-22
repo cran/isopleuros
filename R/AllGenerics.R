@@ -22,9 +22,8 @@
 #' @return
 #'  A [`list`] with the components:
 #'  \tabular{ll}{
-#'   `x` \tab A [`numeric`] vector of x values. \cr
-#'   `y` \tab A [`numeric`] vector of y values. \cr
-#'   `z` \tab A [`numeric`] vector of z values. \cr
+#'   `x` \tab A [`numeric`] vector of x coordinates. \cr
+#'   `y` \tab A [`numeric`] vector of y coordinates. \cr
 #'   `center` \tab A [`numeric`] vector giving the center. \cr
 #'   `scale` \tab A [`numeric`] vector giving the scale factor. \cr
 #'  }
@@ -52,9 +51,9 @@ setGeneric(
 #' @return
 #'  A [`list`] with the components:
 #'  \tabular{ll}{
-#'   `x` \tab A [`numeric`] vector of x values. \cr
-#'   `y` \tab A [`numeric`] vector of y values. \cr
-#'   `z` \tab A [`numeric`] vector of z values. \cr
+#'   `x` \tab A [`numeric`] vector of x coordinates. \cr
+#'   `y` \tab A [`numeric`] vector of y coordinates. \cr
+#'   `z` \tab A [`numeric`] vector of z coordinates. \cr
 #'  }
 #' @example inst/examples/ex-coordinates.R
 #' @author N. Frerebeau
@@ -64,7 +63,7 @@ setGeneric(
 #' @keywords internal
 setGeneric(
   name = "coordinates_cartesian",
-  def = function(x, y, z, ...) standardGeneric("coordinates_cartesian"),
+  def = function(x, y, ...) standardGeneric("coordinates_cartesian"),
   valueClass = "list"
 )
 
@@ -77,11 +76,11 @@ setGeneric(
 #'  interpret `x` in a suitable way (see [grDevices::xyz.coords()]).
 #' @param center A [`logical`] scalar: should the data be centered?
 #' @param scale A [`logical`] scalar: should the data be scaled?
-#' @param xlim A length-two [`numeric`] vector giving the `x` limits in the
+#' @param xlim A length-three [`numeric`] vector giving the `x` limits in the
 #'  range \eqn{[0,1]}.
-#' @param ylim A length-two [`numeric`] vector giving the `y` limits in the
+#' @param ylim A length-three [`numeric`] vector giving the `y` limits in the
 #'  range \eqn{[0,1]}.
-#' @param zlim A length-two [`numeric`] vector giving the `z` limits in the
+#' @param zlim A length-three [`numeric`] vector giving the `z` limits in the
 #'  range \eqn{[0,1]}.
 #' @param xlab,ylab,zlab A [`character`] string giving a label for the x, y and
 #'  z axes.
@@ -343,8 +342,10 @@ setGeneric(
 #' @param x,y,z A [`numeric`] vector giving the x, y and z ternary coordinates
 #'  of a set of points. If `y` and `z` are missing, an attempt is made to
 #'  interpret `x` in a suitable way (see [grDevices::xyz.coords()]).
-#' @param center A [`logical`] scalar: should the data be centered?
-#' @param scale A [`logical`] scalar: should the data be scaled?
+#' @param center A [`logical`] scalar specifying wether the data should be
+#'  centered, or a [`numeric`] vector giving the center.
+#' @param scale A [`logical`] scalar specifying wether the data should be
+#'  scaled, or a [`numeric`] vector giving the scale factor.
 #' @param type A [`character`] string indicating the type of plotting; actually
 #'  any of the types as in [graphics::plot.default()].
 #' @param ... Further graphical parameters (see [graphics::par()]) may also be
@@ -398,6 +399,10 @@ setGeneric(
 #' @param x,y,z A [`numeric`] vector giving the x, y and z ternary coordinates
 #'  of a set of points. If `y` and `z` are missing, an attempt is made to
 #'  interpret `x` in a suitable way (see [grDevices::xyz.coords()]).
+#' @param center A [`logical`] scalar specifying wether the data should be
+#'  centered, or a [`numeric`] vector giving the center.
+#' @param scale A [`logical`] scalar specifying wether the data should be
+#'  scaled, or a [`numeric`] vector giving the scale factor.
 #' @param labels A [`character`] vector or [`expression`] specifying the text
 #'  to be written.
 #' @param ... Further arguments to be passed to [graphics::text()].
@@ -420,8 +425,15 @@ setGeneric(
 #' @param x,y,z A [`numeric`] vector giving the x, y and z ternary coordinates
 #'  of a set of points. If `y` and `z` are missing, an attempt is made to
 #'  interpret `x` in a suitable way (see [grDevices::xyz.coords()]).
+#' @param center A [`logical`] scalar specifying wether the data should be
+#'  centered, or a [`numeric`] vector giving the center.
+#' @param scale A [`logical`] scalar specifying wether the data should be
+#'  scaled, or a [`numeric`] vector giving the scale factor.
 #' @param labels A [`character`] vector or [`expression`] specifying the text
 #'  to be written.
+#' @param type A [`character`] string specifying the shape of the field.
+#'  It must be one of "`text`" or "`shadow`". Any unambiguous substring
+#'  can be given.
 #' @param ... Further graphical parameters (see [graphics::par()]) may also be
 #'  supplied as arguments, particularly, character expansion, `cex` and
 #'  color, `col`.
@@ -436,6 +448,32 @@ setGeneric(
 setGeneric(
   name = "ternary_labels",
   def = function(x, y, z, ...) standardGeneric("ternary_labels")
+)
+
+## Image -----------------------------------------------------------------------
+#' Display a Color Image
+#'
+#' Creates a grid of colored triangles with colors corresponding to the output
+#' of a function.
+#' @param f A [`function`] that takes three arguments (x, y and z coordinates)
+#'  and returns a `numeric` vector.
+#' @param n A length-one [`integer`] vector specifying the maximum number of
+#'  tiles on each axis.
+#' @param palette A [`function`] that takes a single `numeric` vector
+#'  (the output of `f`) as argument and returns a vector of color.
+#'  If `NULL`, the default color scheme will be used. If `FALSE`, the output
+#'  of `f` is used as colors.
+#' @param ... Further parameters to be passed to `f`.
+#' @return
+#'  `ternary_image()` is called it for its side-effects.
+#' @example inst/examples/ex-image.R
+#' @author N. Frerebeau
+#' @docType methods
+#' @family geometries
+#' @aliases ternary_image-method
+setGeneric(
+  name = "ternary_image",
+  def = function(f, ...) standardGeneric("ternary_image")
 )
 
 # Statistics ===================================================================
@@ -485,6 +523,10 @@ setGeneric(
 #' @param x,y,z A [`numeric`] vector giving the x, y and z ternary coordinates
 #'  of a set of points. If `y` and `z` are missing, an attempt is made to
 #'  interpret `x` in a suitable way (see [grDevices::xyz.coords()]).
+#' @param center A [`logical`] scalar specifying wether the data should be
+#'  centered, or a [`numeric`] vector giving the center.
+#' @param scale A [`logical`] scalar specifying wether the data should be
+#'  scaled, or a [`numeric`] vector giving the scale factor.
 #' @param ... Further arguments to be passed to [graphics::polygon()].
 #' @return
 #'  `ternary_hull()` is called it for its side-effects.
@@ -566,10 +608,10 @@ setGeneric(
 #'  Invisibly returns a [`list`] with elements `levels` (the contour levels) and
 #'  `colors` (the contour colors) that can be used for a legend.
 #' @note
-#'  Two-dimensional kernel density estimation is adapted from [`MASS::kde2d()`].
-#'
 #'  **This must be considered as experimental and subject to major changes
 #'  in a future release.**
+#' @source
+#'  Two-dimensional kernel density estimation is adapted from [`MASS::kde2d()`].
 #' @seealso [grDevices::contourLines()]
 #' @example inst/examples/ex-density.R
 #' @author N. Frerebeau

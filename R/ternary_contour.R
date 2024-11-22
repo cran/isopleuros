@@ -13,9 +13,6 @@ setMethod(
                         ilr = TRUE, method = "linear", extrapolate = FALSE,
                         palette = function(i) grDevices::hcl.colors(i, "YlOrRd", rev = TRUE),
                         ...) {
-    ## /!\ For backward compatibility with akima::interp() /!\
-    if (isTRUE(list(...)$linear)) method <- "linear"
-
     ## Calculate contour lines
     xy <- coordinates_contour(x = x, y = y, z = z, value = value, n = n,
                               nlevels = nlevels, levels = levels,
@@ -60,11 +57,13 @@ setMethod(
                         ilr = TRUE, method = "linear", extrapolate = FALSE,
                         palette = function(i) grDevices::hcl.colors(i, "YlOrRd", rev = TRUE),
                         ...) {
-    x <- grDevices::xyz.coords(x)
-    methods::callGeneric(x = x$x, y = x$y, z = x$z, value = value,
-                         n = n, nlevels = nlevels, levels = levels,
-                         ilr = ilr, method = method, extrapolate = extrapolate,
-                         palette = palette, ...)
+    xyz <- grDevices::xyz.coords(x)
+    coords <- methods::callGeneric(x = xyz$x, y = xyz$y, z = xyz$z, value = value,
+                                   n = n, nlevels = nlevels, levels = levels,
+                                   ilr = ilr, method = method,
+                                   extrapolate = extrapolate,
+                                   palette = palette, ...)
+    invisible(coords)
   }
 )
 
