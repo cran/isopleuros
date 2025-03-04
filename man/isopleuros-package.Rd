@@ -14,7 +14,7 @@ Ternary plots made simple. This package allows to create ternary plots using 'gr
 \tabular{ll}{
 \strong{Package:} \tab isopleuros \cr
 \strong{Type:} \tab Package \cr
-\strong{Version:} \tab 1.3.0 \cr
+\strong{Version:} \tab 1.4.0 \cr
 \strong{License:} \tab GPL-3 \cr
 \strong{Zenodo:} \tab \doi{10.5281/zenodo.7940389} \cr
 }
@@ -32,9 +32,9 @@ proceeds? If \code{FALSE} (the default), incomplete cases are removed.
 \seealso{
 Useful links:
 \itemize{
+  \item \url{https://codeberg.org/tesselle/isopleuros}
   \item \url{https://packages.tesselle.org/isopleuros/}
-  \item \url{https://github.com/tesselle/isopleuros}
-  \item Report bugs at \url{https://github.com/tesselle/isopleuros/issues}
+  \item Report bugs at \url{https://codeberg.org/tesselle/isopleuros/issues}
 }
 
 }
